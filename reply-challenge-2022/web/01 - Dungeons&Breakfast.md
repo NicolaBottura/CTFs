@@ -3,6 +3,7 @@
 After clicking the door, we are presented with different functionalities, among them there is the `register` button that we can click in order to register an account and then log in.
 After the loging, we can see that in the `Profile` page we can change password.
 In the source page of `Main Menu` we can see an interesting variable:
+
 ![image](https://user-images.githubusercontent.com/32301476/196949860-1ca05c4e-162c-4ad9-ac52-3642645ccbe3.png)
 
 which looks like the email of the master user.
@@ -46,8 +47,10 @@ def admin():
 
 So, the `../` is stripped first thanks to `remove_dot_slash_recursive()` function, which means that a full LFI is not possible, but we can escape the `notes` directory by abusing the fact that `os.path.join` will generate absolute paths if the second paramter starts with a `/`, which means that we can use the `/secret` directorty that is mentioned in the comment above.
 Guessing the file that contains the flag, we can do the following in Burp:
+
 ![image](https://user-images.githubusercontent.com/32301476/196957786-9d922a4a-a2d4-4907-ab24-f2c3b529be6d.png)
 
 to get the flag:
+
 ![image](https://user-images.githubusercontent.com/32301476/196957844-1203e966-66f0-4900-863e-3435fb7b03ed.png)
 
