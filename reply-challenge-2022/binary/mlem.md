@@ -32,4 +32,4 @@ We can notice that afer printing the message regarding a successfull result, it 
 ![image](https://user-images.githubusercontent.com/32301476/196969883-bfa6f3ee-a1c9-4725-8bce-fd2db34b5b9a.png)
 
 In Ghidra the content of suck function is empty, so I opened it with Ida to check what it does to each character and essentially, the operation is a `+4` to each character of the input string (obv in hex), `add al, 4`.
-So, by adding 4 to each character with CyberChef we can obtain from the input string `wBHC6,r/nh0ll/`[-1[_,,hy` the flag `{FLG:0v3rl4pp3d_15_c00l}`.
+So, by adding 4 to each character with CyberChef we can obtain from the input string ``wBHC6,r/nh0ll/`[-1[_,,hy`` the flag `{FLG:0v3rl4pp3d_15_c00l}`.
