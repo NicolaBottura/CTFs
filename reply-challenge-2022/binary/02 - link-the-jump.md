@@ -1,5 +1,6 @@
 # Link The Jump
 
+## First solution - Exploit rand()
 The challenge provides us a Docker container with a Linux 64-bit ELF binary. Opening it with Ghidra we could observe that it first asks for a password.
 ```
 iVar1 = strcmp(local_68,"secret_passwd_anti_bad_guys");
@@ -49,4 +50,16 @@ So, the plan for the attack is the following:
 
 ![image](https://user-images.githubusercontent.com/32301476/197350696-988ba074-fee7-4044-81cc-0b869a6d819e.png)
 
+## Second solution - Buffer overflow 
+In the `Rename` functionality there is a buffer overflow over the current planet name field.
 
+![image](https://user-images.githubusercontent.com/32301476/197352405-d3c883ac-df7e-413c-90fc-27d370c48fcf.png)
+
+In order to win, we need to reach the portion of the program that calls the `system()` function that is protected by the randomly generated password that we have seen in the previous section, moreover, the menu uses a pointer table in the data section to locate the correct method to run `(*(code *)(&PTR_FUN_00104160)[local_70])();`.
+
+So, the attack plan is:
+- rename the planet to a 16 char name and then read the name back to leak `dataptr`, leaking ASLR
+- rename a planet with 24 plus pointer to the menu function table to overwrite the next pointer
+- go to the next planet, now root points to the menu function table
+- rename the planet, overwriting the Help proc ptr with the "win" function
+- call Help
