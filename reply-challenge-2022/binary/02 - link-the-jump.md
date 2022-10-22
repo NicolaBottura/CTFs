@@ -63,3 +63,5 @@ So, the attack plan is:
 - go to the next planet, now root points to the menu function table
 - rename the planet, overwriting the Help proc ptr with the "win" function
 - call Help
+
+Solution borrowed by the winners of the competition, team WreckTheLine.
