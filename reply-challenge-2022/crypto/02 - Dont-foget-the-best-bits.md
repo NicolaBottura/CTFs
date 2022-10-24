@@ -44,10 +44,7 @@ and the message we obtain is the following:
 This means that the challenge title is fundamental to solve the challenge, maybe to obtain the correct username.
 Googling for `Don't forget the best bits`, we can notice a song by Franz Ferdinand named `Billy goodbye`, so, `Billy` may be the correct name.
 
-AES CBC mode XORs the previous block of ciphertext to next during decryption to forge a message, 
-
-![900px-CBC_decryption svg](https://user-images.githubusercontent.com/32301476/197580591-588e575a-2c63-4af6-95eb-4e6e0b78781c.png)
-
+AES CBC mode XORs the previous block of ciphertext to next during decryption to forge a message.
 So, to obtain the message with the correct user we can use the following script borrowed again from the winners of the challenge:
 ```
 from pwn import *
